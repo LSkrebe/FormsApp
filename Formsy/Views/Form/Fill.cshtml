@@ -1,0 +1,69 @@
+﻿@model Formsy.Models.Template
+@{
+    var form = ViewBag.Form as Formsy.Models.Form;
+    bool isEditing = form != null;
+}
+
+<div class="page-container bg-animated">
+    <div class="form-section card shadow-lg">
+        <div class="form-header">
+            <h2 class="text-primary fw-bold">@(isEditing ? "Edit Submission" : "Fill Form")</h2>
+        </div>
+
+        <form method="post" action="/Form/Submit">
+            <input type="hidden" name="templateId" value="@Model.Id" />
+            @if (isEditing)
+            {
+                <input type="hidden" name="formId" value="@form.Id" />
+            }
+
+            <div class="form-content">
+                @foreach (var question in Model.Questions)
+                {
+                    var existingAnswer = isEditing ? form.Answers.FirstOrDefault(a => a.Question.Id == question.Id)?.Response : "";
+
+                    <div class="form-question">
+                        <label class="form-question-text">@question.Text</label>
+
+                        @if (question.Type == "Single Line")
+                        {
+                            <input type="text" name="answers[@question.Id]" class="form-input" value="@existingAnswer" required />
+                        }
+                        else if (question.Type == "Multi Line")
+                        {
+                            <textarea name="answers[@question.Id]" class="form-textarea" required>@existingAnswer</textarea>
+                        }
+                        else if (question.Type == "Number")
+                        {
+                            <input type="number" name="answers[@question.Id]" class="form-input" min="0" value="@existingAnswer" required />
+                        }
+                        else if (question.Type == "Checkbox")
+                        {
+                            bool isChecked = existingAnswer == "true";
+                            <label class="form-checkbox">
+                                <input type="checkbox" name="answers[@question.Id]" value="true" @(isChecked ? "checked" : "") />
+                                Select this option
+                            </label>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">@(isEditing ? "Update" : "Submit")</button>
+                <a asp-controller="@(isEditing ? "Form" : "Template")" asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+
+        @if (isEditing)
+        {
+            <form asp-controller="Template" asp-action="Delete" asp-route-id="@Model.Id" asp-route-deleteType="Template" method="post" class="d-inline-block">
+                <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this submission?');">Delete</button>
+            </form>
+        }
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/formsFillEditStyles.css">
+}
