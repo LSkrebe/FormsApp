@@ -1,0 +1,49 @@
+﻿/* ========================== */
+/* Background Styling         */
+/* ========================== */
+.bg {
+    background: linear-gradient(100deg, #6a11cb 0%, #2575fc 100%);
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* ========================== */
+/* Typography Styles          */
+/* ========================== */
+h1, h2, h3, a, hr {
+    color: white;
+}
+
+/* ========================== */
+/* Profile Section Styling    */
+/* ========================== */
+#profile, #email, #change-password, #salesforce, #odoo, #jira {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+    #profile:hover,
+    #email:hover,
+    #change-password:hover,
+    #salesforce:hover,
+    #odoo:hover,
+    #jira:hover{
+        color: gray;
+    }
+
+/* ========================== */
+/* Form Labels Styling        */
+/* ========================== */
+.form-label {
+    color: black;
+}

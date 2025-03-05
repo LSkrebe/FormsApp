@@ -1,0 +1,54 @@
+﻿@page
+@model SalesForceModel
+
+@{
+    ViewData["Title"] = "Salesforce";
+    ViewData["ActivePage"] = ManageNavPages.SalesForce;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="row">
+    <div class="col-md-6">
+        @if (Model.AccountExists)
+        {
+            <div class="alert alert-success text-center">
+                <strong>An account is already linked with this user in Salesforce.</strong>
+            </div>
+        }
+        else
+        {
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="SalesForce.Name" class="form-control" id="Name" placeholder="Account Name" required />
+                    <label asp-for="SalesForce.Name" class="form-label"></label>
+                    <span asp-validation-for="SalesForce.Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="SalesForce.Phone" class="form-control" id="Phone" placeholder="Phone" />
+                    <label asp-for="SalesForce.Phone" class="form-label"></label>
+                    <span asp-validation-for="SalesForce.Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="SalesForce.Website" class="form-control" id="Website" placeholder="Website" />
+                    <label asp-for="SalesForce.Website" class="form-label"></label>
+                    <span asp-validation-for="SalesForce.Website" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Create Account</button>
+            </form>
+        }
+    </div>
+</div>
+
+<div class="bg"></div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

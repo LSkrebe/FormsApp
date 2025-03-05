@@ -1,0 +1,256 @@
+﻿/* ============================= */
+/* Page Container & Form Section */
+/* ============================= */
+.page-container {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.form-section, .feedback-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    color: #00796b;
+    margin-bottom: 1rem;
+}
+
+.form-footer button {
+    font-size: 1rem;
+}
+
+/* ============================= */
+/* Form Styling                  */
+/* ============================= */
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    width: 25%;
+    text-align: left;
+}
+
+.form-control, .question-item input[type="text"], .question-item select {
+    width: 70%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+}
+
+    .form-control:focus, .question-item input:focus, .question-item select:focus {
+        outline: none;
+        border-color: #00796b;
+        box-shadow: 0 0 5px rgba(38, 166, 154, 0.5);
+    }
+
+.form-check {
+    transform: scale(2);
+}
+
+/* ============================= */
+/* Question Section              */
+/* ============================= */
+.question-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.remove-question {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .remove-question:hover {
+        background-color: #c0392b;
+    }
+
+#addQuestion {
+    margin-top: 2rem;
+    background-color: #00796b;
+    color: white;
+    padding: 0.75rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #addQuestion:hover {
+        background-color: #004d40;
+    }
+
+/* ============================= */
+/* Feedback Section              */
+/* ============================= */
+.feedback-section h3 {
+    font-size: 1.75rem;
+    color: #00796b;
+    margin-bottom: 1rem;
+}
+
+.list-group-item {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.feedback-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+    .feedback-toggle:hover {
+        color: #004d40;
+    }
+
+.feedback-answers {
+    padding: 1rem;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+    .feedback-answers ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .feedback-answers li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+    }
+
+.question-text {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+}
+
+.answer-text {
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: left;
+    width: 70%;
+}
+
+/* ============================= */
+/* Buttons                       */
+/* ============================= */
+.btn {
+    border-radius: 50px;
+    padding: 12px 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #00796b;
+    color: white;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #004d40;
+    }
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+    .btn-secondary:hover {
+        background-color: #ddd;
+    }
+
+.btn-sm {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete{
+    color: red;
+    text-decoration: underline;
+    border: none;
+    background-color: none;
+}
+    .btn-delete:hover{
+        color: darkred;
+    }
+
+.btn-link {
+    background: none;
+    color: #00796b;
+    text-decoration: none;
+}
+
+/* ============================= */
+/* Responsive Design             */
+/* ============================= */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-label, .form-control {
+        width: 100%;
+    }
+
+    .form-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .feedback-section {
+        margin-top: 2rem;
+    }
+}

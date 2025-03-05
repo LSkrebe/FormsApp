@@ -1,0 +1,83 @@
+﻿@model List<Formsy.Models.Template>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<div class="bg-animated">
+    <div class="container text-center" style="margin-top: 50px;">
+        <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">Welcome to Formsy</h1>
+        <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+            A seamless way to create, manage, and submit forms.
+        </p>
+        <a asp-controller="Template" asp-action="Index" class="btn btn-lg btn-light shadow-lg mt-3 animate__animated animate__zoomIn animate__delay-2s">
+            Get Started
+        </a>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card feature-card animate__animated animate__fadeInLeft">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Explore Forms</h5>
+                        <p class="card-text">Discover and complete a variety of available forms with ease.</p>
+                        <a asp-controller="Template" asp-action="Index" class="btn btn-outline-primary">Browse Forms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card feature-card animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <i class="fas fa-pencil-alt fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Create Forms</h5>
+                        <p class="card-text">Design your own questions and collect responses efficiently.</p>
+                        <a asp-controller="Template" asp-action="Create" class="btn btn-outline-success">Create Forms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card feature-card animate__animated animate__fadeInRight">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Review Feedback</h5>
+                        <p class="card-text">Analyze responses and make data-driven decisions respectively.</p>
+                        <a asp-controller="Form" asp-action="Index" class="btn btn-outline-warning">View Replies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center mt-5" style="margin-bottom: 50px;">
+        <h2 class="mb-4 text-light">What Users Are Saying</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <p>❤️ "The UI is sleek, and creating forms is a breeze!"</p>
+                    <strong>- Lisa Wong</strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <p>🚀 "Formsy has changed how we collect feedback!"</p>
+                    <strong>- Alex Johnson</strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <p>📊 "I love the analytics tools built into Formsy!"</p>
+                    <strong>- Michael Smith</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

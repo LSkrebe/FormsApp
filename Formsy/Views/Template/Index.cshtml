@@ -1,0 +1,55 @@
+﻿@model List<Formsy.Models.Template>
+
+@{
+    ViewData["Title"] = "Templates";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="search-title">Public Forms</h1>
+    <p class="search-subtitle">Browse through a collection of public forms and submit answers.</p>
+
+    <div class="input-group mb-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search forms..." aria-label="Search forms">
+    </div>
+
+    <div class="mb-4">
+        <a href="@Url.Action("Create", "Template")" class="btn btn-success btn-lg">Create New Form</a>
+    </div>
+
+    <div class="form-grid" id="templateContainer">
+        @foreach (var template in Model)
+        {
+            <a href="/Form/Fill/@template.Id" class="card-link template-card" data-search="@($"{template.Title} {template.Topic}".ToLower())">
+                <div class="form-card">
+                    <h3>@Truncate(template.Title, 50)</h3>
+                    <p>@Truncate(template.Description, 100)</p>
+                    <p><strong>@template.Questions.Count Questions</strong> | <strong>@template.Forms.Count Replies</strong></p>
+                </div>
+            </a>
+        }
+    </div>
+
+    <!-- Loading Spinner for Infinite Scroll -->
+    <div id="loading" style="display: none; text-align: center; padding: 10px; color: white;">
+        <p>Loading more templates...</p>
+    </div>
+</div>
+
+<div class="bg-animated"></div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/templatesStyles.css">
+}
+
+@section Scripts {
+    <script src="~/js/templateScroll.js"></script>
+    <script src="~/js/searchTemplates.js"></script>
+}
+
+@functions {
+    public string Truncate(string text, int length)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        return text.Length <= length ? text : text.Substring(0, length) + "...";
+    }
+}

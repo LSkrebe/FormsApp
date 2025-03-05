@@ -1,0 +1,37 @@
+﻿@page
+@model OdooModel
+@{
+    ViewData["Title"] = "Odoo";
+    ViewData["ActivePage"] = ManageNavPages.Odoo;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="form-floating mb-3">
+                @if (!string.IsNullOrEmpty(Model.ApiKey))
+                {
+                    <p class="mt-2 text-center">
+                        <a href="@Model.OdooLink" target="_blank">
+                            Open Odoo
+                        </a>
+                    </p>
+                }
+            </div>
+
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Generate Link</button>
+        </form>
+    </div>
+</div>
+
+<div class="bg"></div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "My Forms";
+    var createdTemplates = ViewBag.CreatedTemplates as List<Formsy.Models.Template>;
+    var submittedForms = ViewBag.SubmittedForms as List<Formsy.Models.Form>;
+}
+
+<div class="container text-center mt-5">
+    <h1 class="search-title">My Forms</h1>
+    <p class="search-subtitle">View and make changes to your forms.</p>
+
+    <div class="toggle-container mb-4">
+        <button id="btnCreatedForms" class="toggle-btn active">Created Forms</button>
+        <button id="btnSubmittedForms" class="toggle-btn">Submitted Feedback</button>
+    </div>
+
+    <div id="createdFormsContainer" class="form-grid">
+        @foreach (var template in createdTemplates)
+        {
+            <a href="/Template/Details/@template.Id" class="card-link template-card" data-search="@($"{template.Title} {template.Topic}".ToLower())">
+                <div class="form-card">
+                    <h3>@Truncate(template.Title, 50)</h3>
+                    <p>@Truncate(template.Description, 100)</p>
+                    <p><strong>@template.Questions.Count Questions</strong> | <strong>@template.Forms.Count Replies</strong></p>
+                </div>
+            </a>
+        }
+    </div>
+
+    <div id="submittedFormsContainer" class="form-grid" style="display: none;">
+        @foreach (var form in submittedForms)
+        {
+            <a href="/Form/Details/@form.Id" class="card-link template-card" data-search="@($"{form.Template.Title} {form.Template.Topic}".ToLower())">
+                <div class="form-card">
+                    <h3>@Truncate(form.Template.Title, 50)</h3>
+                    <p>@Truncate(form.Template.Description, 100)</p>
+                    <p><strong>@form.Template.Questions.Count Questions</strong></p>
+                </div>
+            </a>
+        }
+    </div>
+
+    <div id="loading" style="display: none; text-align: center; padding: 10px;">
+        <p>Loading more forms...</p>
+    </div>
+</div>
+
+<div class="bg-animated"></div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/formsStyles.css">
+}
+
+@section Scripts {
+    <script src="~/js/formsToggle.js"></script>
+}
+
+@functions {
+    public string Truncate(string text, int length)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        return text.Length <= length ? text : text.Substring(0, length) + "...";
+    }
+}
